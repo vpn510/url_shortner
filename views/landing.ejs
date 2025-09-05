@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ShortURL Landing</title>
+   <style>
+      body {
+         margin: 0;
+         font-family: 'Segoe UI', sans-serif;
+         background-color: #0f172a;
+         /* dark slate */
+         color: #3b82f6;
+         /* blue-500 */
+      }
+
+      .container {
+         display: flex;
+         flex-direction: column;
+         min-height: 100vh;
+      }
+
+      .navbar {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 1rem 2rem;
+         background-color: #1e293b;
+      }
+
+      .logo {
+         font-size: 1.5rem;
+         font-weight: bold;
+      }
+
+      .nav-links a {
+         margin-left: 1rem;
+         text-decoration: none;
+         color: #3b82f6;
+         font-weight: 500;
+      }
+
+      .hero {
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         padding: 2rem;
+      }
+
+      .hero-img {
+         height: 150px;
+
+         margin-bottom: 1rem;
+      }
+
+      h1 {
+         font-size: 2.5rem;
+         margin-bottom: 0.5rem;
+      }
+
+      p {
+         font-size: 1.2rem;
+         margin-bottom: 1.5rem;
+      }
+
+      .btn {
+         background-color: #3b82f6;
+         color: white;
+         padding: 0.75rem 1.5rem;
+         border: none;
+         border-radius: 5px;
+         text-decoration: none;
+         font-weight: bold;
+         transition: background 0.3s ease;
+      }
+
+      .btn:hover {
+         background-color: #2563eb;
+      }
+
+      footer {
+         text-align: center;
+         padding: 1rem;
+         background-color: #1e293b;
+         font-size: 0.9rem;
+      }
+   </style>
+
+</head>
+
+<body>
+   <div class="container">
+      <nav class="navbar">
+         <div class="logo">🔗 ShortURL</div>
+         <div class="nav-links">
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+         </div>
+      </nav>
+
+      <main class="hero">
+         <img src="https://copilot.microsoft.com/th/id/BCO.d4dbac9c-cef7-4e88-85f6-d48247dc4ef4.png" alt="URL Shortener"
+            class="hero-img">
+         <h1>Shorten Your Links</h1>
+         <p>Track clicks. Share smarter. Stay in control.</p>
+         <a href="/home" class="btn">Get Started</a>
+      </main>
+
+      <footer>
+         <p>© 2025 Vipin Madheshiya</p>
+      </footer>
+   </div>
+</body>
+
+</html>

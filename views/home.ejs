@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Short URL Generator</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+      body {
+         background-color: #121212;
+         color: #e0e0e0;
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         margin: 0;
+         padding: 20px;
+         display: flex;
+         justify-content: center;
+         align-items: flex-start;
+         min-height: 100vh;
+      }
+
+      .container {
+         background-color: #1e1e1e;
+         border: 1px solid #333;
+         border-radius: 12px;
+         padding: 2rem;
+         width: 100%;
+         max-width: 900px;
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         border-bottom: 1px solid #333;
+         padding-bottom: 1rem;
+         margin-bottom: 2rem;
+      }
+
+      h1 {
+         color: #ffffff;
+         margin: 0;
+         font-size: 1.75rem;
+      }
+
+      .profile-nav {
+         display: flex;
+         align-items: center;
+         gap: 1rem;
+      }
+
+      .profile {
+         height: 48px;
+         width: 48px;
+         border-radius: 50%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-size: 1.5rem;
+         font-weight: bold;
+         background: linear-gradient(145deg, #0d6efd, #6f42c1);
+         color: #fff;
+         text-transform: uppercase;
+      }
+
+      .profile-nav a {
+         color: #0d6efd;
+         text-decoration: none;
+         font-weight: 500;
+      }
+
+      .profile-nav a:hover {
+         text-decoration: underline;
+      }
+
+      form {
+         margin-bottom: 2rem;
+      }
+
+      form label {
+         display: block;
+         margin-bottom: 0.5rem;
+         font-weight: 500;
+         color: #b0b0b0;
+      }
+
+      form .input-group {
+         display: flex;
+         gap: 0.5rem;
+      }
+
+      form input[type="text"] {
+         flex-grow: 1;
+         padding: 0.75rem;
+         background-color: #2c2c2c;
+         border: 1px solid #444;
+         border-radius: 6px;
+         color: #e0e0e0;
+         font-size: 1rem;
+         transition: border-color 0.2s, box-shadow 0.2s;
+      }
+
+      form input[type="text"]:focus {
+         outline: none;
+         border-color: #0d6efd;
+         box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+      }
+
+      button[type="submit"] {
+         padding: 0.75rem 1.5rem;
+         background-color: #0d6efd;
+         color: #fff;
+         border: none;
+         border-radius: 6px;
+         font-size: 1rem;
+         font-weight: bold;
+         cursor: pointer;
+         transition: background-color 0.2s;
+      }
+
+      button[type="submit"]:hover {
+         background-color: #0b5ed7;
+      }
+
+      .generated-url {
+         background-color: #2c2c2c;
+         padding: 1rem;
+         border-radius: 6px;
+         margin-bottom: 2rem;
+         border-left: 4px solid #198754;
+      }
+
+      .generated-url p {
+         margin: 0 0 0.5rem 0;
+         font-weight: 500;
+      }
+
+      .generated-url a {
+         color: #58a6ff;
+         text-decoration: none;
+         font-weight: bold;
+      }
+
+      .generated-url a:hover {
+         text-decoration: underline;
+      }
+
+      table {
+         width: 100%;
+         border-collapse: collapse;
+         margin-top: 1rem;
+      }
+
+      thead {
+         background-color: #2c2c2c;
+      }
+
+      th,
+      td {
+         padding: 0.75rem 1rem;
+         text-align: left;
+         border-bottom: 1px solid #333;
+      }
+
+      th {
+         font-weight: 600;
+         color: #c0c0c0;
+      }
+
+      tbody tr:hover {
+         background-color: #252525;
+      }
+
+      td a {
+         color: #58a6ff;
+         text-decoration: none;
+      }
+
+      td a:hover {
+         text-decoration: underline;
+      }
+
+      a {
+         text-decoration: none;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <div class="header">
+         <h1>Short URL Generator</h1>
+         <% if (locals.user) { %>
+            <div class="profile-nav">
+               <div class="profile">
+                  <a href="/">
+                     <%= user %>
+                  </a>
+               </div>
+               <a href="/user/logout">Logout</a>
+            </div>
+            <% } else { %>
+               <div class="profile-nav">
+                  <a href="/login">Login</a>
+                  <a href="/signup">Sign Up</a>
+               </div>
+               <% } %>
+      </div>
+
+      <% if (locals.id) { %>
+         <div class="generated-url">
+            <p>URL Generated: <a href="http://localhost:3001/url/<%=id%>" target="_blank">http://localhost:3001/url/
+                  <%=id%>
+               </a></p>
+         </div>
+         <% } %>
+
+            <form method="post" action="/url">
+               <label for="url">Enter your URL to shorten</label>
+               <div class="input-group">
+                  <input type="text" id="url" name="url" placeholder="https://example.com" required>
+                  <button type="submit">Generate</button>
+               </div>
+            </form>
+
+            <% if (locals.urls && urls.length> 0) { %>
+               <table>
+                  <thead>
+                     <tr>
+                        <th>S. No</th>
+                        <th>Short ID</th>
+                        <th>Redirect URL</th>
+                        <th>Clicks</th>
+                        <th>Generated Link</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <% urls.forEach((url, i)=> { %>
+                        <tr>
+                           <td>
+                              <%= i + 1 %>
+                           </td>
+                           <td>
+                              <%= url.shortId %>
+                           </td>
+                           <td>
+                              <%= url.redirectURL %>
+                           </td>
+                           <td>
+                              <%= url.visitHistory.length %>
+                           </td>
+                           <td>
+                              <a href="http://localhost:3001/url/<%= url.shortId %>" target="_blank">
+                                 http://localhost:3001/url/<%= url.shortId %>
+                              </a>
+                           </td>
+                        </tr>
+                        <% }) %>
+                  </tbody>
+               </table>
+               <% } %>
+   </div>
+</body>
+
+</html>
