@@ -14,9 +14,9 @@ const PORT = 3001;
 
 // connectDB("mongodb://127.0.0.1:27017/short-url").then(() => console.log("Database connected successfully"));
 try {
-   connectDB("mongodb+srv://bca00420_db_user:LGrLTJQsvOqfw3wn@sorturl.7fhk4pu.mongodb.net/sort_url").then(() => console.log("Database connected successfully"))
+   connectDB("mongodb+srv://bca00420_db_user:LGrLTJQsvOqfw3wn@sorturl.7fhk4pu.mongodb.net/short_url").then(() => console.log("Database connected successfully"))
 } catch (error) {
-   console.log({error: error.message});
+   console.log({ error: error.message });
 }
 
 
