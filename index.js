@@ -4,6 +4,9 @@ import path from 'path'
 import cookieParser from 'cookie-parser';
 import { checkForAuthentication, restrictTo, } from './middleware/auth.js';
 
+import dotenv from 'dotenv'
+dotenv.config();
+
 import urlRoute from './routes/url.js';
 import staticRoute from './routes/staticRouter.js'
 import userRoute from './routes/userRouter.js'
@@ -14,7 +17,7 @@ const PORT = 3001;
 
 // connectDB("mongodb://127.0.0.1:27017/short-url").then(() => console.log("Database connected successfully"));
 try {
-   connectDB("mongodb+srv://bca00420_db_user:LGrLTJQsvOqfw3wn@sorturl.7fhk4pu.mongodb.net/short_url").then(() => console.log("Database connected successfully"))
+   connectDB(process.env.server).then(() => console.log("Database connected successfully"))
 } catch (error) {
    console.log({ error: error.message });
 }
