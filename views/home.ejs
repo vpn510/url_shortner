@@ -207,14 +207,13 @@
                   <a href="/login">Login</a>
                   <a href="/signup">Sign Up</a>
                </div>
-            <% } %>
+               <% } %>
       </div>
 
       <% if (locals.id) { %>
          <div class="generated-url">
-            <p>URL Generated: <a href="http://localhost:3001/url/<%=id%>" target="_blank">http://localhost:3001/url/
-                  <%=id%>
-               </a></p>
+            <p>URL Generated: <a href="https://url-shortner-eu00.onrender.com/url/<%=id%>"
+                  target="_blank">https://url-shortner-eu00.onrender.com/url/<%=id%></a></p>
          </div>
          <% } %>
 
@@ -253,8 +252,8 @@
                               <%= url.visitHistory.length %>
                            </td>
                            <td>
-                              <a href="http://localhost:3001/url/<%=url.shortId%>" target="_blank">
-                                 http://localhost:3001/url/<%=url.shortId%>
+                              <a href="https://url-shortner-eu00.onrender.com/url/<%=url.shortId%>" target="_blank">
+                                 https://url-shortner-eu00.onrender.com/url/<%=url.shortId%>
                               </a>
                            </td>
                         </tr>
