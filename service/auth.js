@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
-const secret = "Vipin@$123"
+const secret = process.env.SECRET_KEY;
+
 export function setUser(user) {
    return jwt.sign({
       _id: user._id,
